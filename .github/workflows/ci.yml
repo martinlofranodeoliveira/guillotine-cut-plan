@@ -1,0 +1,33 @@
+name: C++ checks
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    container:
+      image: gcc:14-bookworm
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Install pinned JSON headers
+        timeout-minutes: 5
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends nlohmann-json3-dev=3.11.2-2
+      - name: Ordinary and sanitizer suites
+        timeout-minutes: 12
+        run: bash scripts/test.sh
+      - name: Asserting offline demo
+        timeout-minutes: 2
+        run: |
+          make demo
+          make demo-json

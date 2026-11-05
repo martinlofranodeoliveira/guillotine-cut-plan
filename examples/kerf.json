@@ -1,0 +1,9 @@
+{
+  "stock": {"width": 10, "height": 6},
+  "kerf": 1,
+  "sheet_limit": 2,
+  "items": [
+    {"id": "A", "width": 6, "height": 6, "allow_rotation": false},
+    {"id": "B", "width": 3, "height": 6, "allow_rotation": false}
+  ]
+}

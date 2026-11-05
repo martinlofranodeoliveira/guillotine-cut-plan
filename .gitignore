@@ -1,0 +1,9 @@
+/build/
+*.o
+*.a
+*.so
+*.dSYM/
+*.gcda
+*.gcno
+*.gcov
+*.swp
